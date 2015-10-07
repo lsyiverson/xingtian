@@ -1,23 +1,24 @@
 package com.lsyiverson.xingtian.ui.activity;
 
-import android.support.v7.app.AppCompatActivity;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.TextView;
+import android.support.v7.app.AppCompatActivity;
 
 import com.lsyiverson.xingtian.R;
-import com.lsyiverson.xingtian.network.RestClient;
+import com.lsyiverson.xingtian.ui.MainActivityBinding;
+import com.lsyiverson.xingtian.ui.viewmodel.MainActivityViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RestClient restClient;
+    private MainActivityBinding mainActivityBinding;
+    private MainActivityViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        mainActivityBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        restClient = RestClient.getInstance();
+        viewModel = new MainActivityViewModel(this);
+        mainActivityBinding.setMainActivityVM(viewModel);
     }
 }

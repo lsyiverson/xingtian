@@ -15,6 +15,10 @@ android {
     }
 
     productFlavors {
+        dev {
+            applicationId "dev.lsyiverson.xingtian"
+            versionName "1.0-dev"
+        }
         production {
         }
     }
@@ -36,6 +40,7 @@ android {
     buildTypes {
         debug {
             applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
         }
         release {
             signingConfig signingConfigs.release
@@ -88,7 +93,9 @@ dependencies {
     compile 'net.sourceforge.streamsupport:streamsupport:1.3.1'
 
     //Config properties
-    compile 'commons-configuration:commons-configuration:1.10'
+    compile('commons-configuration:commons-configuration:1.10') {
+        exclude group: 'commons-logging', module:'commons-logging'
+    }
 
     //Guava
     compile 'com.google.guava:guava:19.0-rc2'
