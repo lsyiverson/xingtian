@@ -9,6 +9,8 @@ import com.lsyiverson.xingtian.R;
 import com.lsyiverson.xingtian.ui.MainActivityBinding;
 import com.lsyiverson.xingtian.ui.viewmodel.MainActivityViewModel;
 
+import java.util.concurrent.TimeUnit;
+
 public class MainActivity extends AppCompatActivity {
 
     private MainActivityBinding mainActivityBinding;
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         mainActivityBinding.setMainActivityVM(viewModel);
 
         RxView.clicks(mainActivityBinding.queryButton)
+            .debounce(500, TimeUnit.MILLISECONDS)
             .map(o -> mainActivityBinding.mobileNumber.getText().toString())
             .subscribe(viewModel::queryMobileNumber);
     }
