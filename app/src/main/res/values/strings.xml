@@ -5,4 +5,5 @@
 
     <string name="mobile_number">Mobile Number</string>
     <string name="query">query</string>
+    <string name="phone_permission_toast">Need phone permission to show mobile info when there comes a call.</string>
 </resources>
