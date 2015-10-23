@@ -4,6 +4,7 @@
 
     <data class=".ui.MobileInfoItemBinding">
         <import type="com.lsyiverson.xingtian.ui.viewmodel.MobileItemViewModel"/>
+        <import type="com.lsyiverson.xingtian.utils.StringUtil"/>
         <variable
             name="mobileItemVM"
             type="MobileItemViewModel"/>

@@ -22,15 +22,14 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_ASK_PERMISSIONS = 123;
 
     private MainActivityBinding mainActivityBinding;
-    private MainActivityViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mainActivityBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        viewModel = new MainActivityViewModel(this);
-        mainActivityBinding.setMainActivityVM(viewModel);
+        MainActivityViewModel viewModel = new MainActivityViewModel(this);
+        mainActivityBinding.setMainActivityModel(viewModel.getModel());
 
         RxView.clicks(mainActivityBinding.queryButton)
             .debounce(500, TimeUnit.MILLISECONDS)
