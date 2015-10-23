@@ -14,48 +14,11 @@ import com.lsyiverson.xingtian.network.service.JuheService;
 import rx.android.schedulers.AndroidSchedulers;
 
 public class MainActivityViewModel extends BaseObservable {
-    private String hello;
-    private String requestUrl;
-    private String requestKey;
     private MobileInfo mobileInfo;
     private JuheService juheService;
 
     public MainActivityViewModel(Context context) {
-        hello = context.getPackageName();
-        requestUrl = ApiEnvironment.Juhe.getApiBasePath();
-        requestKey = ApiEnvironment.Juhe.getApiKey();
-
         juheService = RestClient.getInstance().getJuheService();
-    }
-
-    @Bindable
-    public String getHello() {
-        return hello;
-    }
-
-    public void setHello(String hello) {
-        this.hello = hello;
-        notifyPropertyChanged(BR.hello);
-    }
-
-    @Bindable
-    public String getRequestUrl() {
-        return requestUrl;
-    }
-
-    public void setRequestUrl(String requestUrl) {
-        this.requestUrl = requestUrl;
-        notifyPropertyChanged(BR.requestUrl);
-    }
-
-    @Bindable
-    public String getRequestKey() {
-        return requestKey;
-    }
-
-    public void setRequestKey(String requestKey) {
-        this.requestKey = requestKey;
-        notifyPropertyChanged(BR.requestKey);
     }
 
     @Bindable

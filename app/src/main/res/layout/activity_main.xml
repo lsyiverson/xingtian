@@ -1,5 +1,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools">
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data class=".ui.MainActivityBinding">
         <import type="com.lsyiverson.xingtian.ui.viewmodel.MainActivityViewModel" />
@@ -17,24 +18,6 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context=".MainActivity">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{mainActivityVM.hello}"
-            tools:text="com.lsyiverson.xingtian"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{mainActivityVM.requestUrl}"
-            tools:text="http://api.juhe.cn/"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{mainActivityVM.requestKey}"
-            tools:text="3cbf0d058323365bc0ddd1f2cb01a770"/>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -66,5 +49,10 @@
             android:text="@{mainActivityVM.mobileInfo.city}"
             tools:text="chengdu"/>
 
+        <android.support.v7.widget.RecyclerView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:id="@+id/recycler_view"
+            tools:listitem="@layout/item_mobile_info"/>
     </LinearLayout>
 </layout>

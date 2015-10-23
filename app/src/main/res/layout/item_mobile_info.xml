@@ -1,0 +1,48 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+    <data class=".ui.MobileInfoItemBinding">
+        <import type="com.lsyiverson.xingtian.ui.viewmodel.MobileItemViewModel"/>
+        <variable
+            name="mobileItemVM"
+            type="MobileItemViewModel"/>
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        card_view:cardCornerRadius="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:text="@{mobileItemVM.mobileNumber}"
+                tools:text="13500135000"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{mobileItemVM.mobileInfo.company}"
+                    tools:text="中国移动"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{StringUtil.formatAddress(mobileItemVM.mobileInfo.province, mobileItemVM.mobileInfo.city)}"
+                tools:text="四川 成都"/>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</layout>
