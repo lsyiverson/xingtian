@@ -6,6 +6,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.widget.Toast;
 
 import com.jakewharton.rxbinding.view.RxView;
@@ -28,6 +29,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mainActivityBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
+        initView();
+
+        checkPermission();
+    }
+
+    private void initView() {
         MainActivityViewModel viewModel = new MainActivityViewModel(this);
         mainActivityBinding.setMainActivityModel(viewModel.getModel());
 
@@ -36,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
             .map(o -> mainActivityBinding.mobileNumber.getText().toString())
             .subscribe(viewModel::queryMobileNumber);
 
+        mainActivityBinding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mainActivityBinding.recyclerView.setAdapter(viewModel.getAdapter());
+    }
+
+    private void checkPermission() {
         int hasReadPhoneStatePermission = ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE);
         if (hasReadPhoneStatePermission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,

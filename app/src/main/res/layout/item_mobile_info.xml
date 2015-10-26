@@ -3,11 +3,11 @@
         xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
     <data class=".ui.MobileInfoItemBinding">
-        <import type="com.lsyiverson.xingtian.ui.viewmodel.MobileItemViewModel"/>
+        <import type="com.lsyiverson.xingtian.ui.model.MobileItemModel"/>
         <import type="com.lsyiverson.xingtian.utils.StringUtil"/>
         <variable
-            name="mobileItemVM"
-            type="MobileItemViewModel"/>
+            name="mobileItemModel"
+            type="MobileItemModel"/>
     </data>
 
     <android.support.v7.widget.CardView
@@ -30,19 +30,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
-                android:text="@{mobileItemVM.mobileNumber}"
+                android:text="@{mobileItemModel.mobileNumber}"
                 tools:text="13500135000"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{mobileItemVM.mobileInfo.company}"
+                    android:text="@{mobileItemModel.mobileInfo.company}"
                     tools:text="中国移动"/>
             </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{StringUtil.formatAddress(mobileItemVM.mobileInfo.province, mobileItemVM.mobileInfo.city)}"
+                android:text="@{StringUtil.formatAddress(mobileItemModel.mobileInfo.province, mobileItemModel.mobileInfo.city)}"
                 tools:text="四川 成都"/>
         </LinearLayout>
     </android.support.v7.widget.CardView>

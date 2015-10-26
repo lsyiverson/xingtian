@@ -9,35 +9,54 @@ import android.view.ViewGroup;
 
 import com.lsyiverson.xingtian.R;
 import com.lsyiverson.xingtian.ui.MobileInfoItemBinding;
+import com.lsyiverson.xingtian.ui.model.MobileItemModel;
+
+import java.util.List;
 
 public class MobileHistoryAdapter extends RecyclerView.Adapter<MobileHistoryAdapter.MobileHistoryHolder> {
     private final Context context;
 
-    public MobileHistoryAdapter(Context context) {
+    private List<MobileItemModel> models;
+
+    public MobileHistoryAdapter(Context context, List<MobileItemModel> models) {
         this.context = context;
+        this.models = models;
     }
 
     @Override
     public MobileHistoryHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         MobileInfoItemBinding itemBinding = DataBindingUtil.inflate(((Activity) context).getLayoutInflater(),
             R.layout.item_mobile_info, parent, false);
-        return null;
+        MobileHistoryHolder holder = new MobileHistoryHolder(itemBinding.getRoot());
+        holder.setBinding(itemBinding);
+        return holder;
     }
 
     @Override
     public void onBindViewHolder(MobileHistoryHolder holder, int position) {
-
+        holder.getBinding().setMobileItemModel(models.get(position));
+        holder.getBinding().executePendingBindings();
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return models.size();
     }
 
     public static class MobileHistoryHolder extends RecyclerView.ViewHolder {
 
+        private MobileInfoItemBinding binding;
+
         public MobileHistoryHolder(View itemView) {
             super(itemView);
+        }
+
+        public MobileInfoItemBinding getBinding() {
+            return binding;
+        }
+
+        public void setBinding(MobileInfoItemBinding binding) {
+            this.binding = binding;
         }
     }
 }
