@@ -103,5 +103,13 @@ dependencies {
     //Guava
     compile 'com.google.guava:guava:19.0-rc2'
 
+
+    testCompile('com.squareup.assertj:assertj-android:1.1.1') {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    testCompile 'org.mockito:mockito-all:2.0.2-beta'
+    testCompile 'junit:junit:4.12'
+    testCompile "org.robolectric:robolectric:3.0"
+
     retrolambdaConfig 'net.orfjackal.retrolambda:retrolambda:2.0.6'
 }
